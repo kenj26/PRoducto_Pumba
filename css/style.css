@@ -1,0 +1,147 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+@keyframes headerSlideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes headerSlideUp {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
+
+header {
+    background-image: url('../img/nav_NBA.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 20px 0;
+    transition: background-color 0.3s ease;
+    width: auto;
+    height: 150px;
+    animation: headerSlideDown 0.5s ease forwards; 
+}
+
+header.scrolled {
+    background-color: rgba(0, 123, 255, 0.8);
+}
+
+header.hidden {
+    animation: headerSlideUp 0.5s ease forwards; 
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
+
+.nav {
+    list-style: none;
+    padding: 0;
+    font-size: 25px;
+}
+
+.nav-item {
+    display: inline;
+    margin-left: 20px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+}
+.nav-link:hover{
+    color: brown;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: larger;
+}
+.section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0; 
+    border: black solid 3px;
+    border-radius: 10px;
+    margin: 30px;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.image {
+    width: auto;
+    height: 450px;
+    margin-right: 20px; 
+}
+
+.text {
+    max-width: 600px; 
+    text-align: center;
+    font-size: larger;
+}
+
+.visible {
+    opacity: 1; 
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: black; 
+    color: white;
+}
+
+
+.logos{
+    margin: 20px;
+    padding: 20px;
+    float: right;
+  }
+
+  img{
+    width: 30px; 
+      height: auto; 
+      margin: 0 10px; 
+  }
+
+  footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content:center
+  }
+  .pumba{
+   width: auto;
+   height: 150px;
+  }
+  h3{
+    padding-top: 28px;
+  }

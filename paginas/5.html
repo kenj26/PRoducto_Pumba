@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+@keyframes headerSlideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@keyframes headerSlideUp {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
+header {
+    background-image: url('../img/nav_NBA.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 20px 0;
+    transition: background-color 0.3s ease;
+    width: auto;
+    height: 150px;
+    animation: headerSlideDown 0.5s ease forwards; 
+}
+header.scrolled {
+    background-color: rgba(0, 123, 255, 0.8);
+}
+header.hidden {
+    animation: headerSlideUp 0.5s ease forwards; 
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: auto;
+}
+
+.nav {
+    list-style: none;
+    padding: 0;
+}
+
+.nav-item {
+    display: inline;
+    margin-left: 20px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+}
+
+.section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 0; 
+}
+
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: black; 
+    color: white;
+}
+
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    grid-gap: 0; 
+    padding: 10px; 
+}
+
+.grid-item {
+    position: relative;
+    overflow: hidden; 
+}
+
+.grid-item img {
+    width: 100%; 
+    height: auto; 
+}
+
+.large {
+    grid-column: span 2; 
+    grid-row: span 2;
+}
+
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container d-flex justify-content-between align-items-center">
+            <h1>Adidas</h1>
+            <nav>
+                <ul class="nav">
+                    <li class="nav-item"><a class="nav-link text-white" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#">Shop</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <div class="gallery">
+        <div class="grid-item large">
+            <img src="../img/5-1.jpg" alt="Producto Grande">
+        </div>
+        <div class="grid-item">
+            <img src="../img/5-2.jpg" alt="Producto 1">
+        </div>
+        <div class="grid-item">
+            <img src="../img/5-3.jpg" alt="Producto 2">
+        </div>
+        <div class="grid-item">
+            <img src="../img/5-4.jpg" alt="Producto 3">
+        </div>
+        <div class="grid-item">
+            <img src="../img/5-5.jpg" alt="Producto 4">
+        </div>
+        <div class="grid-item">
+            <img src="../img/5-6.jpg" alt="Producto 5">
+        </div>
+    </div>
+
+
+
+
+
+    <footer>
+        <p>© 2024 Promoción de Productos. Todos los derechos reservados.</p>
+    </footer>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const sections = document.querySelectorAll('.section');
+    let lastScrollTop = 0; 
+    const options = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1 
+    };
+    const callback = (entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            } else {
+                entry.target.classList.remove('visible');
+            }
+        });
+    };
+    const observer = new IntersectionObserver(callback, options);
+
+    sections.forEach(section => {
+        observer.observe(section);
+    });
+    window.onscroll = function() {
+        const header = document.querySelector('header');
+        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollTop > lastScrollTop) {
+            header.classList.add('hidden');
+        } else {
+            header.classList.remove('hidden');
+            header.classList.add('scrolled');
+        }
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
+    };
+});
+
+    </script>
+</body>
+</html>
